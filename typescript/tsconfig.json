@@ -1,0 +1,8 @@
+
+{
+  "compilerOptions": {
+    "lib": ["es6", "dom"],
+    "module" :"es2015",
+  },
+  "include": ["../app"],
+}

@@ -1,0 +1,13 @@
+<div class='App-Paper'>
+  <div  
+    class='App-Paper-MessagesContainer' 
+    scroll-down
+  >
+    <individual-message ng-repeat="message in mesConVM.messages"  message="message"> </individual-message>
+  </div>
+  <input-bar userInput="mesConVM.userInputMessage"> </input-bar>
+  <!-- <form class='App-Paper-InputBarContainer' ng-submit='mesConVM.handleUserSubmitMessage()'>
+    <input ng-model="mesConVM.userInputMessage" ng-change='mesConVM.change()' class='App-Paper-InputBarContainer' type='text' > </input>
+  </form> -->
+  {{mesConVM.userInputMessage}}
+</div>
