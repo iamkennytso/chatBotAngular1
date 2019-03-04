@@ -1,4 +1,4 @@
-import { ServiceMessageObject } from '../typescript/interfaces.message-container';
+import { ServiceMessageObject, SendMessageReponseData } from '../typescript/interfaces.message-container';
 
 
 class MessageService {
@@ -7,11 +7,12 @@ class MessageService {
 
   sendMessage = async function (messageObj: ServiceMessageObject) {
     try {
-      const payload = await this.$http.post(this.sendMessageAPI, messageObj);
-      return payload.data;
+      const response = await this.$http.post(this.sendMessageAPI, messageObj);
+      const payload: SendMessageReponseData = response.data
+      return payload;
     } catch (err) {
-      console.error(err)
-    }
+      console.error(err);
+    };
   };
 };
 

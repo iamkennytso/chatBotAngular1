@@ -39,20 +39,23 @@ var MessageService = /** @class */ (function () {
         this.sendMessageAPI = 'http://localhost:5001/sendMessage';
         this.sendMessage = function (messageObj) {
             return __awaiter(this, void 0, void 0, function () {
-                var payload, err_1;
+                var response, payload, err_1;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
                             _a.trys.push([0, 2, , 3]);
                             return [4 /*yield*/, this.$http.post(this.sendMessageAPI, messageObj)];
                         case 1:
-                            payload = _a.sent();
-                            return [2 /*return*/, payload.data];
+                            response = _a.sent();
+                            payload = response.data;
+                            return [2 /*return*/, payload];
                         case 2:
                             err_1 = _a.sent();
                             console.error(err_1);
                             return [3 /*break*/, 3];
-                        case 3: return [2 /*return*/];
+                        case 3:
+                            ;
+                            return [2 /*return*/];
                     }
                 });
             });

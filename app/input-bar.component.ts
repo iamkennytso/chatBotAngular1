@@ -1,10 +1,22 @@
+class inputBarCtrl {
+  constructor(){}
+}
+
 angular
   .module('pokeWeakApp')
   .component('inputBar', {
-    templateUrl: '/input-bar.component.html',
+    template: 
+      `<form class='App-Paper-InputBarContainer' ng-submit='ctrl.handleSubmit()'>
+        <input
+          type='text'
+          ng-model="ctrl.userInputMessage" 
+          class='App-Paper-InputBarContainer'
+        />
+      </form>`,
+    controller: inputBarCtrl,
+    controllerAs: "ctrl",
     bindings: {
-      userInput: '='
-      // submit="<",
-      // change="<",
+      userInputMessage: '=',
+      handleSubmit: '&',
     }
   })

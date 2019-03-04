@@ -1,8 +1,11 @@
 angular
   .module('pokeWeakApp')
   .component('individualMessage', {
-    templateUrl: '/individual-message.component.html',
+    template: 
+      `<div class="isHuman-{{$ctrl.message.senderIsHuman}}">
+        {{$ctrl.message.messageContent}}
+      </div>`,
     bindings: {
-      message: '<'
+      message: '<',
     }
   })
