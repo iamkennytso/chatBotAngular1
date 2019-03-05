@@ -7,8 +7,10 @@
   "license": "MIT",
   "dependencies": {
     "@types/angular": "^1.6.54",
+    "@types/angular-material": "^1.1.66",
     "angular": "^1.7.5",
     "angular-loader": "^1.7.5",
+    "angular-material": "^1.1.13",
     "angular-route": "^1.7.5",
     "angular-uuid": "0.0.4",
     "html5-boilerplate": "0.0.1",

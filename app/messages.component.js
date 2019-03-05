@@ -1,6 +1,11 @@
 var messagesCtrl = /** @class */ (function () {
     function messagesCtrl() {
     }
+    messagesCtrl.prototype.$onChanges = function (changeObject) {
+        if (changeObject && changeObject.messages) {
+            this.validMessages++;
+        }
+    };
     return messagesCtrl;
 }());
 angular
@@ -10,6 +15,7 @@ angular
     controller: messagesCtrl,
     controllerAs: "ctrl",
     bindings: {
-        messages: '<'
+        messages: '<',
+        validMessages: '='
     }
 });

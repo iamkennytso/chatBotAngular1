@@ -1,16 +1,11 @@
+// import * as ng from 'angular';
 var messageContainerCtrl = /** @class */ (function () {
     function messageContainerCtrl(MessageService, $scope) {
         this.MessageService = MessageService;
         this.$scope = $scope;
-        this.validMessages = 1;
+        this.validMessages = 0;
         this.userInputMessage = '';
-        this.messages = [
-            {
-                senderIsHuman: false,
-                messageContent: 'Hello there! How may I help you?',
-                sentUtcTime: 1550786221589
-            },
-        ];
+        this.messages = [];
         this.handleUserSubmitMessage = function () {
             var _this = this;
             if (!(this.userInputMessage.trim())) {
@@ -34,7 +29,6 @@ var messageContainerCtrl = /** @class */ (function () {
             // messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
             // replace with uuid
             var sessionId = '763435ca-ed1b-4b85-866f-db5d59081038';
-            this.validMessages++;
             this.MessageService
                 .sendMessage({ newMessage: newMessage, sessionId: sessionId })
                 .then(function (dialogFlowResponse) {
@@ -45,7 +39,7 @@ var messageContainerCtrl = /** @class */ (function () {
                 // messages[loadingMessageIndex] = { ...card, messageContent: materialCard };
                 // } else {
                 _this.messages[loadingMessageIndex] = text;
-                _this.validMessages++;
+                _this.messages = _this.messages.slice();
                 // it is a mystery why this digest is necessary
                 _this.$scope.$digest();
                 // }
@@ -62,6 +56,13 @@ var messageContainerCtrl = /** @class */ (function () {
             });
         };
     }
+    messageContainerCtrl.prototype.$onInit = function () {
+        this.messages.push({
+            senderIsHuman: false,
+            messageContent: 'Hello there! How may I help you?',
+            sentUtcTime: 1550786221589
+        });
+    };
     return messageContainerCtrl;
 }());
 ;

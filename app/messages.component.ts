@@ -1,6 +1,14 @@
-class messagesCtrl {
+// import * as ng from 'angular';
+import { Message } from '../typescript/interfaces.message-container'
+
+class messagesCtrl implements ng.IComponentController{
   constructor(){}
-  
+  $onChanges(changeObject: {messages: ng.IChangesObject<Message[]>}) {
+    if (changeObject && changeObject.messages) {
+      this.validMessages++
+    }
+  }
+
 }
 
 angular
@@ -14,5 +22,6 @@ angular
     controllerAs: "ctrl",
     bindings: {
       messages: '<',
+      validMessages: '=',
     }
   })

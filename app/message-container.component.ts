@@ -1,22 +1,22 @@
-import { 
-  Card, 
-  Message,
-} from '../typescript/interfaces.message-container'
-import * as ng from 'angular';
+import { Card, Message, } from '../typescript/interfaces.message-container'
+// import * as ng from 'angular';
 
-class messageContainerCtrl {
+class messageContainerCtrl implements ng.IComponentController {
   constructor(private MessageService, private $scope: ng.IScope) {
   }
 
-  validMessages: number = 1;
+  validMessages: number = 0;
   userInputMessage: string = '';
-  messages: Message[] = [
-    {
+  messages: Message[] = [];
+  
+  $onInit(){
+    this.messages.push({
       senderIsHuman: false,
       messageContent: 'Hello there! How may I help you?',
       sentUtcTime: 1550786221589,
-    },
-  ];
+    })
+  }
+
   handleUserSubmitMessage = function(): void {
     if (!(this.userInputMessage.trim())) {
       return;
@@ -39,7 +39,6 @@ class messageContainerCtrl {
     // messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
     // replace with uuid
     const sessionId: string = '763435ca-ed1b-4b85-866f-db5d59081038';
-    this.validMessages++;
 
     this.MessageService
       .sendMessage({ newMessage, sessionId })
@@ -51,7 +50,7 @@ class messageContainerCtrl {
             // messages[loadingMessageIndex] = { ...card, messageContent: materialCard };
           // } else {
             this.messages[loadingMessageIndex] = text;
-            this.validMessages++;
+            this.messages = this.messages.slice()
             // it is a mystery why this digest is necessary
             this.$scope.$digest();
           // }
