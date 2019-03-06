@@ -1,10 +1,10 @@
 export interface Message {
   senderIsHuman: boolean,
-  messageContent: string,
+  messageContent: any,
   sentUtcTime: number,
 }
 
-export interface Card {
+export interface CardContent {
   title: string,
   subtitle: string,
   imageUri: string, 
@@ -15,7 +15,7 @@ export interface Card {
 }
 export interface SendMessageReponseData {
   text: Message,
-  card?: Card,
+  card?: CardContent,
 }
 export interface ServiceMessageObject {
   newMessage: string,

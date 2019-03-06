@@ -1,8 +1,7 @@
-import { Card, Message, } from '../typescript/interfaces.message-container'
-// import * as ng from 'angular';
+import { Card, Message, CardContent } from '../typescript/interfaces.message-container';
 
 class messageContainerCtrl implements ng.IComponentController {
-  constructor(private MessageService, private $scope: ng.IScope) {
+  constructor(private MessageService: ng.IServiceProviderClass, private $scope: ng.IScope) {
   }
 
   validMessages: number = 0;
@@ -10,11 +9,12 @@ class messageContainerCtrl implements ng.IComponentController {
   messages: Message[] = [];
   
   $onInit(){
-    this.messages.push({
+    const welcomeMessage: Message = {
       senderIsHuman: false,
       messageContent: 'Hello there! How may I help you?',
       sentUtcTime: 1550786221589,
-    })
+    };
+    this.messages.push(welcomeMessage);
   }
 
   handleUserSubmitMessage = function(): void {
@@ -22,7 +22,6 @@ class messageContainerCtrl implements ng.IComponentController {
       return;
     }
     const sentUtcTime: number = new Date().getTime();
-    // const { messagesContainer } = this.messages;
     const newMessage: Message = {
       senderIsHuman: true,
       messageContent: this.userInputMessage,
@@ -34,9 +33,12 @@ class messageContainerCtrl implements ng.IComponentController {
       sentUtcTime: sentUtcTime + 1,
     };
     const loadingMessageIndex: number = this.messages.length + 1;
+
     this.messages = [...this.messages, newMessage, loadingMessage];
     this.userInputMessage = '';
-    // messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
+    
+    const messagesContainer = document.getElementsByTagName('messages')[0];
+    scrollDown(messagesContainer);
     // replace with uuid
     const sessionId: string = '763435ca-ed1b-4b85-866f-db5d59081038';
 
@@ -44,18 +46,12 @@ class messageContainerCtrl implements ng.IComponentController {
       .sendMessage({ newMessage, sessionId })
         .then(dialogFlowResponse => {
           const text: Message = dialogFlowResponse.text;
-          const card: Card = dialogFlowResponse.card;
-          // if (card) {
-            // const materialCard = <MessageCard data={card.messageContent} />
-            // messages[loadingMessageIndex] = { ...card, messageContent: materialCard };
-          // } else {
-            this.messages[loadingMessageIndex] = text;
-            this.messages = this.messages.slice()
-            // it is a mystery why this digest is necessary
-            this.$scope.$digest();
-          // }
+          const card: Message = dialogFlowResponse.card;
+          this.messages[loadingMessageIndex] = card || text;
+          // it is a mystery why this digest is necessary
+          this.$scope.$digest();
           // function to scroll to bottom of input box
-          // messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
+          scrollDown(messagesContainer);
         })
         .catch(err => {
           console.error(err)
@@ -69,8 +65,12 @@ class messageContainerCtrl implements ng.IComponentController {
   };
 };
 
+const scrollDown = (element): void => {
+  element.scrollTop = element.scrollHeight - element.clientHeight;
+}
+
 angular
-  .module('pokeWeakApp')
+  .module('pokeWeakApp', ['ngMaterial'])
   .component('messageContainer', {
     templateUrl: '/message-container.component.html',
     controller: messageContainerCtrl,

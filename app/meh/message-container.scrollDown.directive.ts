@@ -12,6 +12,7 @@
 //     }
 //   }
 // }
+
 // angular
 //   .module('pokeWeakApp')
 //   .directive('scrollDown', scrollDown)

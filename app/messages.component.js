@@ -11,7 +11,7 @@ var messagesCtrl = /** @class */ (function () {
 angular
     .module('pokeWeakApp')
     .component('messages', {
-    template: "<div class=\"App-Paper-MessagesContainer\">\n        <individual-message ng-repeat=\"message in ctrl.messages\" message=\"message\"> </individual-message>\n      </div>",
+    template: "\n        <div class=\"App-Paper-MessagesContainer\">\n          <individual-message ng-repeat=\"message in ctrl.messages\" message=\"message\"> </individual-message>\n        </div>\n      ",
     controller: messagesCtrl,
     controllerAs: "ctrl",
     bindings: {

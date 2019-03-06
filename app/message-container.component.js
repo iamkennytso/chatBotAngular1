@@ -1,4 +1,3 @@
-// import * as ng from 'angular';
 var messageContainerCtrl = /** @class */ (function () {
     function messageContainerCtrl(MessageService, $scope) {
         this.MessageService = MessageService;
@@ -12,7 +11,6 @@ var messageContainerCtrl = /** @class */ (function () {
                 return;
             }
             var sentUtcTime = new Date().getTime();
-            // const { messagesContainer } = this.messages;
             var newMessage = {
                 senderIsHuman: true,
                 messageContent: this.userInputMessage,
@@ -26,7 +24,8 @@ var messageContainerCtrl = /** @class */ (function () {
             var loadingMessageIndex = this.messages.length + 1;
             this.messages = this.messages.concat([newMessage, loadingMessage]);
             this.userInputMessage = '';
-            // messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
+            var messagesContainer = document.getElementsByTagName('messages')[0];
+            scrollDown(messagesContainer);
             // replace with uuid
             var sessionId = '763435ca-ed1b-4b85-866f-db5d59081038';
             this.MessageService
@@ -34,17 +33,11 @@ var messageContainerCtrl = /** @class */ (function () {
                 .then(function (dialogFlowResponse) {
                 var text = dialogFlowResponse.text;
                 var card = dialogFlowResponse.card;
-                // if (card) {
-                // const materialCard = <MessageCard data={card.messageContent} />
-                // messages[loadingMessageIndex] = { ...card, messageContent: materialCard };
-                // } else {
-                _this.messages[loadingMessageIndex] = text;
-                _this.messages = _this.messages.slice();
+                _this.messages[loadingMessageIndex] = card || text;
                 // it is a mystery why this digest is necessary
                 _this.$scope.$digest();
-                // }
                 // function to scroll to bottom of input box
-                // messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
+                scrollDown(messagesContainer);
             })["catch"](function (err) {
                 console.error(err);
                 var errorMessage = {
@@ -57,17 +50,21 @@ var messageContainerCtrl = /** @class */ (function () {
         };
     }
     messageContainerCtrl.prototype.$onInit = function () {
-        this.messages.push({
+        var welcomeMessage = {
             senderIsHuman: false,
             messageContent: 'Hello there! How may I help you?',
             sentUtcTime: 1550786221589
-        });
+        };
+        this.messages.push(welcomeMessage);
     };
     return messageContainerCtrl;
 }());
 ;
+var scrollDown = function (element) {
+    element.scrollTop = element.scrollHeight - element.clientHeight;
+};
 angular
-    .module('pokeWeakApp')
+    .module('pokeWeakApp', ['ngMaterial'])
     .component('messageContainer', {
     templateUrl: '/message-container.component.html',
     controller: messageContainerCtrl,

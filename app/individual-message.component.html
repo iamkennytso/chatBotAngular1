@@ -1,0 +1,21 @@
+<div class="isHuman-{{ctrl.message.senderIsHuman}}" ng-if="!ctrl.isCard">
+  {{ctrl.message.messageContent}}
+</div>
+<div class="isHuman-{{ctrl.message.senderIsHuman}}" ng-if="ctrl.isCard">
+  <md-card>
+    <img ng-src="{{ctrl.message.messageContent.imageUri}}" class="md-card-image" alt={{ctrl.message.messageContent.title}}>
+    <md-card-title>
+      <md-card-title-text>
+      <span class="md-headline">{{ctrl.message.messageContent.title}}</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      {{ctrl.message.messageContent.subtitle}}
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+      <a href={{button.postback}} ng-repeat="button in ctrl.message.messageContent.buttons">
+        <md-button>{{button.text}}</md-button>
+      </a>
+    </md-card-actions>
+  </md-card>
+</div>

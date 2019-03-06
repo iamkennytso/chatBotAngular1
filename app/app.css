@@ -7,23 +7,22 @@
   background-color: darkgray;
 }
 
+messages {
+  overflow-x: auto;
+  height: 100%;
+}
 message-container {
   background-color: white;
   height: 95%;
   width: 95%;
-  display: grid;
-  grid-template-rows: 1fr auto;
-  box-shadow: 1px 1px;
-  border-radius: 5px;
-  overflow-x: auto;
 }
 
 .App-Paper{
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: 1fr auto;
-  background: white;
+  grid-template-rows: 95% auto;
+  /* background: white; */
 }
 
 .isHuman-true {
@@ -46,9 +45,24 @@ message-container {
   border-radius: 2px;
 }
 
+.md-card-image{
+  display: block;
+  height: auto;
+  width: 330px;
+}
+
 .App-Paper-InputBarContainer{
   border: none;
-  border-bottom: 2px solid black;
+  /* border-bottom: 2px solid black; */
   width: 100%;
   background-color: lightgrey;
+}
+.md-errors-spacer{
+  display: none;
+}
+.App-Paper-InputBarContainer > md-input-container {
+  margin: 0px;
+}
+.App-Paper-InputBarContainer > md-input-container > input {
+  height: 90%;
 }
