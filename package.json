@@ -8,6 +8,7 @@
   "dependencies": {
     "@types/angular": "^1.6.54",
     "@types/angular-material": "^1.1.66",
+    "@uirouter/angularjs": "^1.0.7",
     "angular": "^1.7.5",
     "angular-loader": "^1.7.5",
     "angular-material": "^1.1.13",
