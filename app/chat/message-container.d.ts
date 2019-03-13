@@ -1,3 +1,9 @@
+import * as _angular_ from 'angular';
+
+declare global {
+  const angular: typeof _angular_;
+}
+
 export interface Message {
   senderIsHuman: boolean,
   messageContent: any,

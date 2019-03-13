@@ -1,0 +1,77 @@
+<div class="navigationButton" ng-cloak="">
+  <md-button class="md-raised" ng-href="/#!/">
+    <div>
+      Home
+    </div>
+  </md-button>
+</div>
+<div class="App-Paper" layout="column" layout-fill md-whiteframe-12dp >
+  <form name="userForm" >
+    <!-- EMail Field -->
+    <md-input-container class="md-block" flex-gt-sm>
+      <label> E-Mail </label>
+      <input 
+        ng-model="ctrl.user.email" 
+        required
+        name="email" 
+        ng-pattern="/^.+@.+\..+$/"
+      />
+      <div ng-messages="userForm.email.$error">
+        <div ng-message="required"> 
+          You must enter an e-mail address.
+        </div>
+        <div ng-message="pattern"> 
+          Please double check your e-mail address.
+        </div>
+      </div>
+    </md-input-container>
+    <!-- Password Field -->
+    <md-input-container class="md-block" flex-gt-sm>
+      <label> Password </label>
+      <input 
+        required
+        ng-model="ctrl.user.password" 
+        type="password" 
+        name="password" 
+        minlength="8" 
+        maxlength="64"
+        ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/"
+      />
+      <div ng-messages="userForm.password.$error">
+        <div ng-message="required"> 
+          You must enter a password.
+        </div>
+        <div ng-message="minlength">
+          Your password is too short, needs to be at least 8 characters. 
+        </div>
+        <div ng-message="maxlength">
+          Your password is too long, needs to be at most 64 characters. 
+        </div>
+        <div ng-message="pattern">
+          {{ctrl.generatePasswordError(userForm.password)}}
+        </div>
+      </div>
+    </md-input-container>
+    <!-- Favorite Field -->
+    <md-input-container class="md-block" flex-gt-sm>
+      <label> Favorite Pokemon </label>
+      <input 
+        ng-model="ctrl.user.favorite" 
+        name="favorite" 
+        check-pokemon
+      />
+      <div ng-messages="userForm.favorite.$error">
+        <div ng-message="checkPokemon">
+          Please enter a valid pokemon! Original 151 only.
+        </div>
+      </div>
+    </md-input-container>
+    <!-- CONTROLLER: {{ctrl}} -->
+    <!-- {{userForm}} -->
+    <md-button class="md-raised" >
+      <div>
+        Preview
+      </div>
+    </md-button>
+  </form>
+</div>

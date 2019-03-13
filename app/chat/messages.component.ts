@@ -1,4 +1,4 @@
-import { Message } from '../typescript/interfaces.message-container'
+import { Message } from './message-container'
 
 class messagesCtrl implements ng.IComponentController{
   constructor(){}

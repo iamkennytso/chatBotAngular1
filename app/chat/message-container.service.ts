@@ -1,5 +1,4 @@
-import { ServiceMessageObject, SendMessageReponseData } from '../typescript/interfaces.message-container';
-
+import { ServiceMessageObject, SendMessageReponseData } from './message-container';
 
 class MessageService implements ng.IComponentController {
   constructor(private $http: ng.IHttpService){}

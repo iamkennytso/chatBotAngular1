@@ -6,7 +6,7 @@ class inputBarCtrl implements ng.IComponentController {
 angular
   .module('pokeWeakApp')
   .component('inputBar', {
-    templateUrl: './input-bar.component.html',
+    templateUrl: '/chat/input-bar.tpl.html',
     controller: inputBarCtrl, 
     controllerAs: "ctrl",
     bindings: {

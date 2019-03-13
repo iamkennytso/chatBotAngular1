@@ -1,4 +1,4 @@
-import { Card, Message, CardContent } from '../typescript/interfaces.message-container';
+import { Message } from './message-container';
 
 class messageContainerCtrl implements ng.IComponentController {
   constructor(private MessageService: ng.IServiceProviderClass, private $scope: ng.IScope) {
@@ -36,12 +36,13 @@ class messageContainerCtrl implements ng.IComponentController {
 
     this.messages = [...this.messages, newMessage, loadingMessage];
     this.userInputMessage = '';
-    
+    const testElement = angular.element('messages')
+    console.log(testElement)
     const messagesContainer = document.getElementsByTagName('messages')[0];
     scrollDown(messagesContainer);
     // replace with uuid
     const sessionId: string = '763435ca-ed1b-4b85-866f-db5d59081038';
-
+  
     this.MessageService
       .sendMessage({ newMessage, sessionId })
         .then(dialogFlowResponse => {
@@ -65,14 +66,14 @@ class messageContainerCtrl implements ng.IComponentController {
   };
 };
 
-const scrollDown = (element): void => {
+const scrollDown = (element: Element): void => {
   element.scrollTop = element.scrollHeight - element.clientHeight;
 }
 
 angular
-  .module('pokeWeakApp', ['ngMaterial'])
+  .module('pokeWeakApp')
   .component('messageContainer', {
-    templateUrl: '/message-container.component.html',
+    templateUrl: '/chat/message-container.tpl.html',
     controller: messageContainerCtrl,
     controllerAs: "ctrl",
   })

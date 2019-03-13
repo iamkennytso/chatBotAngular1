@@ -11,7 +11,7 @@ var indMesCtrl = /** @class */ (function () {
 angular
     .module('pokeWeakApp')
     .component('individualMessage', {
-    templateUrl: '/individual-message.component.html',
+    templateUrl: '/chat/individual-message.tpl.html',
     controller: indMesCtrl,
     controllerAs: 'ctrl',
     bindings: {

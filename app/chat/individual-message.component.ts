@@ -1,4 +1,4 @@
-import { Message } from '../typescript/interfaces.message-container'
+import { Message } from './message-container'
 
 class indMesCtrl implements ng.IComponentController  {
   constructor(){}
@@ -14,7 +14,7 @@ class indMesCtrl implements ng.IComponentController  {
 angular
   .module('pokeWeakApp')
   .component('individualMessage', {
-    templateUrl: '/individual-message.component.html',
+    templateUrl: '/chat/individual-message.tpl.html',
     controller: indMesCtrl,
     controllerAs: 'ctrl',
     bindings: {

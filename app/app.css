@@ -4,16 +4,26 @@
   background-color: darkgray;
 }
 
+.navigationButton{
+  width: 8%;
+  position: absolute;
+  top: 2%;
+  right: 2%;
+}
 messages {
   overflow-x: auto;
 }
+
 message-container {
   background-color: white;
   height: 95%;
   width: 95%;
 }
-
-
+user{
+  background-color: white;
+  height: 95%;
+  width: 95%;
+}
 .isHuman-true {
   border: 1px solid blue;
   padding: 3px;
