@@ -66,9 +66,13 @@
         </div>
       </div>
     </md-input-container>
-    <!-- CONTROLLER: {{ctrl}} -->
     <!-- {{userForm}} -->
-    <md-button class="md-raised" >
+    {{ctrl.loading}}
+    <md-button 
+      class="md-raised openUserDialogButton" 
+      ng-disabled="userForm.$invalid" 
+      ng-click="ctrl.openDialog()"
+    >
       <div>
         Preview
       </div>

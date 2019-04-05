@@ -36,8 +36,6 @@ class messageContainerCtrl implements ng.IComponentController {
 
     this.messages = [...this.messages, newMessage, loadingMessage];
     this.userInputMessage = '';
-    const testElement = angular.element('messages')
-    console.log(testElement)
     const messagesContainer = document.getElementsByTagName('messages')[0];
     scrollDown(messagesContainer);
     // replace with uuid

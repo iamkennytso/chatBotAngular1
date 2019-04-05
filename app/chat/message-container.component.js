@@ -24,8 +24,6 @@ var messageContainerCtrl = /** @class */ (function () {
             var loadingMessageIndex = this.messages.length + 1;
             this.messages = this.messages.concat([newMessage, loadingMessage]);
             this.userInputMessage = '';
-            var testElement = angular.element('messages');
-            console.log(testElement);
             var messagesContainer = document.getElementsByTagName('messages')[0];
             scrollDown(messagesContainer);
             // replace with uuid

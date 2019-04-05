@@ -1,0 +1,23 @@
+<div role="dialog" class="userDialog-Dialog" flex='auto' layout="column" layout-align="center center">
+  <md-toolbar flex="10">
+    <div class="md-toolbar-tools">
+      <h2>User Summary</h2>
+    </div>
+  </md-toolbar>
+
+  <div class="userDialog-Content" flex="80" layout="column" layout-align="center center">
+    <div flex='10'>
+      Your email address is {{dialogCtrl.email}} <br/>
+      Here's your favorite pokemon!
+    </div>
+    <div flex='90'>
+      <img class="userDialog-Content-Image" alt='{{dialogCtrl.favorite}}' src='{{dialogCtrl.favoriteUrl}}'>
+    </div>
+  </div>
+
+  <div layout="row" class="userDialog-Footer" flex="10">
+    <md-button md-autofocus flex class="md-primary" ng-click="dialogCtrl.closeDialog()">
+      Close
+    </md-button>
+  </div>
+</div>

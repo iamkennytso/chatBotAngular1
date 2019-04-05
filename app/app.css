@@ -24,6 +24,25 @@ user{
   height: 95%;
   width: 95%;
 }
+.userDialog{
+  width: 70vw;
+  height: 70vh;
+}
+.userDialog-Dialog{
+  height: 100%;
+}
+.userDialog-Content{
+  background-color: white;
+  width:100%;
+}
+.userDialog-Content-Image{
+  height: 100%;
+  width: auto;
+}
+.userDialog-Footer{
+  background-color: white;
+  width:100%;
+}
 .isHuman-true {
   border: 1px solid blue;
   padding: 3px;
